@@ -1,4 +1,9 @@
 package strategy;
 
-public class SortStrategy {
+import model.Student;
+
+import java.util.Comparator;
+
+public interface SortStrategy {
+    Comparator<Student> getComparator();
 }
