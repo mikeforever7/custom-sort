@@ -15,7 +15,11 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Map<SortOption, SortStrategy> strategies = Map.of(SortOption.GROUP, new GroupSortStrategy(), SortOption.AVERAGE_GRADE, new GradeSortStrategy(), SortOption.RECORD_BOOK, new RecordBookSortStrategy());
+        Map<SortOption, SortStrategy> strategies = Map.of(
+                SortOption.GROUP, new GroupSortStrategy(),
+                SortOption.AVERAGE_GRADE, new GradeSortStrategy(),
+                SortOption.RECORD_BOOK, new RecordBookSortStrategy()
+        );
 
 //        List<Student> students = new ArrayList<>();
 //        students.add(new Student(302, 4.2, 1003));

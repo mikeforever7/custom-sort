@@ -9,7 +9,6 @@ public class ManualStudentInput implements FillStrategy {
 
     @Override
     public Student fill() {
-
         int group;
         double grade;
         int recordBook;
