@@ -16,7 +16,7 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "groupNumber=" + groupNumber +
-                ", averageGrade=" + averageGrade +
+                ", averageGrade=" + String.format("%.2f", averageGrade) +
                 ", recordBookNumber=" + recordBookNumber +
                 '}';
     }
