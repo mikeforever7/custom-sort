@@ -32,4 +32,42 @@ public class Student {
     public int getRecordBookNumber() {
         return recordBookNumber;
     }
+
+    public static class Builder {
+        private int groupNumber;
+        private double averageGrade;
+        private int recordBookNumber;
+
+        public Builder groupNumber(int groupNumber) {
+            this.groupNumber = groupNumber;
+            return this;
+        }
+
+        public Builder averageGrade (double averageGrade) {
+            this.averageGrade = averageGrade;
+            return this;
+        }
+
+        public Builder recordBookNumber (int recordBookNumber) {
+            this.recordBookNumber = recordBookNumber;
+            return this;
+        }
+
+        public Student build() {
+
+            if (groupNumber < 1 || groupNumber > 100) {
+                throw new IllegalArgumentException("groupNumber must be between 1 and 100");
+            }
+
+            if (averageGrade < 0 || averageGrade > 10) {
+                throw new IllegalArgumentException("averageGrade must be between 0 and 10");
+            }
+
+            if (recordBookNumber < 1 || recordBookNumber > 1000000) {
+                throw new IllegalArgumentException("recordBookNumber must be between 1 and 1000000");
+            }
+
+            return new Student(groupNumber, averageGrade, recordBookNumber);
+        }
+    }
 }
