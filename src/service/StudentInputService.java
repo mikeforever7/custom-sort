@@ -23,7 +23,6 @@ public class StudentInputService {
 
             if (choice == 0) {
                 System.out.println("Ввод завершен");
-
                 break;
             }
 
@@ -56,12 +55,9 @@ public class StudentInputService {
                     break;
                 default:
                     System.out.println("Неверный ввод!");
-
             }
-
         }
-        System.out.println("Всего студентов в списке: " +studentList.size());
+        System.out.println("Всего студентов в списке: " + studentList.size());
         return studentList;
-
     }
 }

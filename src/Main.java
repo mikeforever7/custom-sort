@@ -15,11 +15,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Map<SortOption, SortStrategy> strategies = Map.of(
-                SortOption.GROUP, new GroupSortStrategy(),
-                SortOption.AVERAGE_GRADE, new GradeSortStrategy(),
-                SortOption.RECORD_BOOK, new RecordBookSortStrategy()
-        );
+        Map<SortOption, SortStrategy> strategies = Map.of(SortOption.GROUP, new GroupSortStrategy(), SortOption.AVERAGE_GRADE, new GradeSortStrategy(), SortOption.RECORD_BOOK, new RecordBookSortStrategy());
 
 //        List<Student> students = new ArrayList<>();
 //        students.add(new Student(302, 4.2, 1003));
@@ -28,14 +24,12 @@ public class Main {
 //        students.add(new Student(101, 4.5, 1002));
 //        students.add(new Student(205, 3.9, 1004));
 
-
         StudentInputService studentInputService = new StudentInputService();
         List<Student> students = studentInputService.inputStudents();
         if (students.isEmpty()) {
             System.out.println("Список студентов пуст.");
             return;
         }
-
 
         System.out.println("До сортировки:");
         printStudents(students);
@@ -48,7 +42,6 @@ public class Main {
 
         System.out.println("После сортировки:");
         printStudents(sortedStudents);
-
     }
 
     private static void printStudents(List<Student> students) {

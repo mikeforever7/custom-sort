@@ -12,7 +12,7 @@ public class RandomStudentGenerator implements FillStrategy {
         int recordBook;
 
         group = random.nextInt(MIN_GROUP, MAX_GROUP + 1);
-        grade =random.nextDouble(MIN_GRADE,MAX_GRADE);
+        grade = random.nextDouble(MIN_GRADE, MAX_GRADE);
         recordBook = random.nextInt(MIN_RECORD_BOOK, MAX_RECORD_BOOK + 1);
         return new Student(group, grade, recordBook);
     }
@@ -26,5 +26,4 @@ public class RandomStudentGenerator implements FillStrategy {
     private static final int MAX_RECORD_BOOK = 1000000;
 
     private final Random random = new Random();
-
 }
