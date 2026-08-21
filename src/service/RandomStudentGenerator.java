@@ -4,6 +4,7 @@ import model.Student;
 
 import java.util.Random;
 
+
 public class RandomStudentGenerator implements FillStrategy {
     //TODO Эти диапазоны должны совпадать с будущей валидацией Builder
     private static final int MIN_GROUP = 1;
