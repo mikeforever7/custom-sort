@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class StudentInputService {
 
-    public  List<Student>inputStudents() {
+    public List<Student> inputStudents() {
         List<Student> studentList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -18,12 +18,12 @@ public class StudentInputService {
         System.out.println("3- из файла");
         int choice = scanner.nextInt();
 
-        switch (choice){
+        switch (choice) {
             case 1:
                 System.out.println("Введите количество студентов, которых нужно заполнить вручную");
                 int manualCount = scanner.nextInt();
                 FillStrategy manualStrategy = new ManualStudentInput();
-                for (int i=0; i< manualCount; i++) {
+                for (int i = 0; i < manualCount; i++) {
                     System.out.println("\n--- Студент " + (i + 1) + " (вручную) ---");
                     Student student = manualStrategy.fill();
                     studentList.add(student);
@@ -33,8 +33,8 @@ public class StudentInputService {
             case 2:
                 System.out.println("Введите количество студентов, которых нужно заполнить случайно");
                 int randomCount = scanner.nextInt();
-                FillStrategy randomStrategy =new RandomStudentGenerator();
-                for (int i=0; i< randomCount; i++) {
+                FillStrategy randomStrategy = new RandomStudentGenerator();
+                for (int i = 0; i < randomCount; i++) {
                     System.out.println("\n--- Студент " + (i + 1) + " (случайно) ---");
                     Student student = randomStrategy.fill();
                     studentList.add(student);

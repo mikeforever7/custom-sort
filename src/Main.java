@@ -49,7 +49,6 @@ public class Main {
         System.out.println("После сортировки:");
         printStudents(sortedStudents);
 
-
     }
 
     private static void printStudents(List<Student> students) {
