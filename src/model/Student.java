@@ -32,4 +32,38 @@ public class Student {
     public int getRecordBookNumber() {
         return recordBookNumber;
     }
+
+    public static class Builder {
+        private int groupNumber;
+        private double averageGrade;
+        private int recordBookNumber;
+
+        public Builder groupNumber(int groupNumber) {
+            if (groupNumber < 1 || groupNumber > 100) {
+                throw new IllegalArgumentException("Номер группы должен быть в диапазоне от 1 до 100 включительно");
+            }
+            this.groupNumber = groupNumber;
+            return this;
+        }
+
+        public Builder averageGrade(double averageGrade) {
+            if (averageGrade < 0 || averageGrade > 10) {
+                throw new IllegalArgumentException("Средний балл должен быть в диапазоне от 0 до 10 включительно ");
+            }
+            this.averageGrade = averageGrade;
+            return this;
+        }
+
+        public Builder recordBookNumber(int recordBookNumber) {
+            if (recordBookNumber < 1 || recordBookNumber > 1000000) {
+                throw new IllegalArgumentException("Номер зачетной книжки должен быть в диапазоне от 1 до 1000000 включительно");
+            }
+            this.recordBookNumber = recordBookNumber;
+            return this;
+        }
+
+        public Student build() {
+            return new Student(groupNumber, averageGrade, recordBookNumber);
+        }
+    }
 }
