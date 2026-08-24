@@ -5,7 +5,9 @@ import strategy.GradeSortStrategy;
 import strategy.GroupSortStrategy;
 import strategy.QuickSort;
 import strategy.RecordBookSortStrategy;
+import strategy.SelectiveSort;
 import strategy.SortStrategy;
+
 import java.util.List;
 import java.util.Map;
 
@@ -36,10 +38,12 @@ public class Main {
         printStudents(students);
 
         QuickSort quickSort = new QuickSort();
-        SortService sortService = new SortService(quickSort);
+        SelectiveSort selectiveSort = new SelectiveSort();
+        SortService sortService = new SortService(quickSort, selectiveSort);
 
         // Вот тут мы выбираем по какому параметру будем сортировать
-        List<Student> sortedStudents = sortService.sort(students, strategies.get(SortOption.GROUP));
+//        List<Student> sortedStudents = sortService.sort(students, strategies.get(SortOption.GROUP));
+        List<Student> sortedStudents = sortService.selectiveSort(students, Student::getRecordBookNumber);
 
         System.out.println("После сортировки:");
         printStudents(sortedStudents);
