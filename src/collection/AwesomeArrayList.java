@@ -4,6 +4,7 @@ import model.Student;
 
 import java.util.AbstractList;
 
+
 public class AwesomeArrayList extends AbstractList<Student> {
     private Student[] myArray;
     private int arraySize;
@@ -19,7 +20,6 @@ public class AwesomeArrayList extends AbstractList<Student> {
         return arraySize;
     }
 
-    //добавление всегда в конец
     @Override
     public void add(int index, Student element) {
         if (index < 0 || index > arraySize) {
@@ -33,7 +33,11 @@ public class AwesomeArrayList extends AbstractList<Student> {
             }
             myArray = tempArray;
         }
-        myArray[arraySize] = element;
+        //с добавлением по индексу, а не только в конец
+        for (int i = arraySize; i > index; i--) {
+            myArray[i] = myArray[i - 1];
+        }
+        myArray[index] = element;
         arraySize++;
     }
 
@@ -58,5 +62,17 @@ public class AwesomeArrayList extends AbstractList<Student> {
         myArray[arraySize - 1] = null;
         arraySize--;
         return removed;
+    }
+
+    //todo реализовать если время будет
+    @Override
+    public void clear() {
+        super.clear();
+    }
+
+    //todo реализовать если время будет
+    @Override
+    public Student set(int index, Student element) {
+        return super.set(index, element);
     }
 }

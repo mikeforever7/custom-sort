@@ -20,13 +20,21 @@ public class Main {
                 SortOption.AVERAGE_GRADE, new GradeSortStrategy(),
                 SortOption.RECORD_BOOK, new RecordBookSortStrategy()
         );
-        //=============================================================================================================
+        //========================================тест add============================================================
+//        System.out.println("Тест вставки по индексу:");
 //        AwesomeArrayList list = new AwesomeArrayList();
-//        list.add(0, new Student(302, 4.2, 1003));
 //        list.add(0, new Student(101, 3.7, 1001));
-//        System.out.println("Размер: " + list.size());
-//        System.out.println("Первый студент: " + list.get(0));
-//        System.out.println("Второй студент: " + list.get(1));
+//        list.add(0, new Student(202, 4.2, 1002));
+//        list.add(0, new Student(303, 4.5, 1003));
+//        System.out.println("До вставки:");
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i));
+//        }
+//        list.add(1, new Student(404, 3.9, 4000));
+//        System.out.println("После вставки:");
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(list.get(i));
+//        }
         //==============================================================================================================
 //        List<Student> students = new ArrayList<>();
 //        students.add(new Student(302, 4.2, 1003));
