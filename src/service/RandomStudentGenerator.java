@@ -7,9 +7,6 @@ import java.util.Random;
 import static constans.Constants.*;
 
 public class RandomStudentGenerator implements FillStrategy {
-    //TODO Эти диапазоны должны совпадать с будущей валидацией Builder
-
-
     private final Random random = new Random();
 
     @Override
