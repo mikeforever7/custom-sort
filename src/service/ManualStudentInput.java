@@ -19,6 +19,10 @@ public class ManualStudentInput implements FillStrategy {
         grade = scanner.nextDouble();
         System.out.println("Введите номер зачетки");
         recordBook = scanner.nextInt();
-        return new Student(group, grade, recordBook);
+        return new Student.Builder()
+                .groupNumber(group)
+                .averageGrade(grade)
+                .recordBookNumber(recordBook)
+                .build();
     }
 }
