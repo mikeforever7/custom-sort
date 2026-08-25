@@ -8,7 +8,7 @@ public class Student {
     private double averageGrade;
     private int recordBookNumber;
 
-    public Student(int groupNumber, double averageGrade, int recordBookNumber) {
+    private Student(int groupNumber, double averageGrade, int recordBookNumber) {
         this.groupNumber = groupNumber;
         this.averageGrade = averageGrade;
         this.recordBookNumber = recordBookNumber;
@@ -21,6 +21,22 @@ public class Student {
                 ", averageGrade=" + String.format("%.2f", averageGrade) +
                 ", recordBookNumber=" + recordBookNumber +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+
+        return groupNumber == student.groupNumber
+                && Double.compare(averageGrade, student.averageGrade) == 0
+                && recordBookNumber == student.recordBookNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(groupNumber, averageGrade, recordBookNumber);
     }
 
     public int getGroupNumber() {
@@ -67,23 +83,5 @@ public class Student {
         public Student build() {
             return new Student(groupNumber, averageGrade, recordBookNumber);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Student student = (Student) o;
-
-        return groupNumber == student.groupNumber
-                && Double.compare(averageGrade, student.averageGrade) == 0
-                && recordBookNumber == student.recordBookNumber;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(groupNumber, averageGrade, recordBookNumber);
     }
 }
