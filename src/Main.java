@@ -44,7 +44,7 @@ public class Main {
 //        students.add(new Student(205, 3.9, 1004));
 
         StudentInputService studentInputService = new StudentInputService();
-        AwesomeArrayList students = studentInputService.inputStudents();
+        List<Student> students = studentInputService.inputStudents();
         if (students.isEmpty()) {
             System.out.println("Список студентов пуст.");
             return;
@@ -65,14 +65,9 @@ public class Main {
         printStudents(sortedStudents);
     }
 
-    private static void printStudents(List<Student> students) {
+    private static void printStudents(List<Student> students)  {
         for (Student student : students) {
             System.out.println(student);
         }
-
-
-
-
-
     }
 }

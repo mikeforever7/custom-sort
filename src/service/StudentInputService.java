@@ -3,6 +3,7 @@ package service;
 import collection.AwesomeArrayList;
 import model.Student;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -10,8 +11,8 @@ import java.util.stream.Stream;
 
 public class StudentInputService {
 
-    public AwesomeArrayList inputStudents() {
-        AwesomeArrayList studentList = new AwesomeArrayList();
+    public List<Student> inputStudents() {
+        List<Student> studentList = new AwesomeArrayList();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -34,7 +35,7 @@ public class StudentInputService {
                     int manualCount = scanner.nextInt();
                     FillStrategy manualStrategy = new ManualStudentInput();
 
-                    AwesomeArrayList manualStream = Stream.iterate(0, i -> i + 1)
+                    List<Student> manualStream = Stream.iterate(0, i -> i + 1)
                             .limit(manualCount)
                             .map(i -> manualStrategy.fill())
                             .peek(student -> studentList.add(studentList.size(), student))
@@ -47,25 +48,10 @@ public class StudentInputService {
                     int randomCount = scanner.nextInt();
                     FillStrategy randomStrategy = new RandomStudentGenerator();
 
-                    AwesomeArrayList randomStream = Stream.generate(() -> randomStrategy.fill())
+                    List<Student> randomStream = Stream.generate(() -> randomStrategy.fill())
                             .limit(randomCount)
                             .peek(student -> studentList.add(studentList.size(), student))
                             .collect(Collectors.toCollection(AwesomeArrayList::new));
-
-//                    .map(student -> {
-//                    studentList.add(studentList.size(), student);
-//                    return student;
-//                })
-//                        .collect(Collectors.toCollection(AwesomeArrayList::new));
-
-
-
-
-
-
-
-
-
 
                     randomStream.forEach(System.out::println);
                     break;
