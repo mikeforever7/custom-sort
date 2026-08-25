@@ -22,7 +22,6 @@ public class AwesomeArrayList extends AbstractList<Student> {
     //добавление всегда в конец
     @Override
     public void add(int index, Student element) {
-        //super.add(index, element);
         if (index < 0 || index > arraySize) {
             throw new IndexOutOfBoundsException("такого элемента в этом потрясающем массиве нет");
         }
@@ -49,7 +48,6 @@ public class AwesomeArrayList extends AbstractList<Student> {
     //удаления нет предусмотрено в программе, но на всякий случай реализовал
     @Override
     public Student remove(int index) {
-        // return super.remove(index);
         if (index < 0 || index >= arraySize) {
             throw new IndexOutOfBoundsException("такого элемента в этом потрясающем массиве нет");
         }

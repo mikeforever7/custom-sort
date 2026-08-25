@@ -21,12 +21,12 @@ public class Main {
                 SortOption.RECORD_BOOK, new RecordBookSortStrategy()
         );
         //=============================================================================================================
-        AwesomeArrayList list = new AwesomeArrayList();
-        list.add(0, new Student(302, 4.2, 1003));
-        list.add(0, new Student(101, 3.7, 1001));
-        System.out.println("Размер: " + list.size());
-        System.out.println("Первый студент: " + list.get(0));
-        System.out.println("Второй студент: " + list.get(1));
+//        AwesomeArrayList list = new AwesomeArrayList();
+//        list.add(0, new Student(302, 4.2, 1003));
+//        list.add(0, new Student(101, 3.7, 1001));
+//        System.out.println("Размер: " + list.size());
+//        System.out.println("Первый студент: " + list.get(0));
+//        System.out.println("Второй студент: " + list.get(1));
         //==============================================================================================================
 //        List<Student> students = new ArrayList<>();
 //        students.add(new Student(302, 4.2, 1003));
@@ -36,7 +36,7 @@ public class Main {
 //        students.add(new Student(205, 3.9, 1004));
 
         StudentInputService studentInputService = new StudentInputService();
-        List<Student> students = studentInputService.inputStudents();
+        AwesomeArrayList students = studentInputService.inputStudents();
         if (students.isEmpty()) {
             System.out.println("Список студентов пуст.");
             return;
