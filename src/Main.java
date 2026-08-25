@@ -7,6 +7,7 @@ import strategy.QuickSort;
 import strategy.RecordBookSortStrategy;
 import strategy.SelectiveSort;
 import strategy.SortStrategy;
+import collection.AwesomeArrayList;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,14 @@ public class Main {
                 SortOption.AVERAGE_GRADE, new GradeSortStrategy(),
                 SortOption.RECORD_BOOK, new RecordBookSortStrategy()
         );
-
+        //=============================================================================================================
+        AwesomeArrayList list = new AwesomeArrayList();
+        list.add(0, new Student(302, 4.2, 1003));
+        list.add(0, new Student(101, 3.7, 1001));
+        System.out.println("Размер: " + list.size());
+        System.out.println("Первый студент: " + list.get(0));
+        System.out.println("Второй студент: " + list.get(1));
+        //==============================================================================================================
 //        List<Student> students = new ArrayList<>();
 //        students.add(new Student(302, 4.2, 1003));
 //        students.add(new Student(101, 3.7, 1001));
@@ -53,5 +61,10 @@ public class Main {
         for (Student student : students) {
             System.out.println(student);
         }
+
+
+
+
+
     }
 }
