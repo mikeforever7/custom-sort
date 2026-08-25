@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Student {
 
     private int groupNumber;
@@ -65,5 +67,23 @@ public class Student {
         public Student build() {
             return new Student(groupNumber, averageGrade, recordBookNumber);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        return groupNumber == student.groupNumber
+                && Double.compare(averageGrade, student.averageGrade) == 0
+                && recordBookNumber == student.recordBookNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(groupNumber, averageGrade, recordBookNumber);
     }
 }
