@@ -1,7 +1,6 @@
 package service;
 
 import model.Student;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -44,5 +43,4 @@ public class StudentCountService {
 
         return result;
     }
-
 }
