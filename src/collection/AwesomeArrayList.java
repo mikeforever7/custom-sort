@@ -4,7 +4,6 @@ import model.Student;
 
 import java.util.AbstractList;
 
-
 public class AwesomeArrayList extends AbstractList<Student> {
     private Student[] myArray;
     private int arraySize;
@@ -49,7 +48,6 @@ public class AwesomeArrayList extends AbstractList<Student> {
         return myArray[index];
     }
 
-    //удаления нет предусмотрено в программе, но на всякий случай реализовал
     @Override
     public Student remove(int index) {
         if (index < 0 || index >= arraySize) {
@@ -64,15 +62,21 @@ public class AwesomeArrayList extends AbstractList<Student> {
         return removed;
     }
 
-    //todo реализовать если время будет
     @Override
     public void clear() {
-        super.clear();
+        for (int i = 0; i < arraySize; i++) {
+            myArray[i] = null;
+        }
+        arraySize = 0;
     }
 
-    //todo реализовать если время будет
     @Override
     public Student set(int index, Student element) {
-        return super.set(index, element);
+        if (index < 0 || index >= arraySize) {
+            throw new IndexOutOfBoundsException("такого элемента в этом потрясающем массиве нет");
+        }
+        Student tmp = myArray[index];
+        myArray[index] = element;
+        return tmp;
     }
 }
