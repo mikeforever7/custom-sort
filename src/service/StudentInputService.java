@@ -56,8 +56,20 @@ public class StudentInputService {
                     randomStream.forEach(System.out::println);
                     break;
                 case 3:
-                    //TODO здесь должен быть вызов чтения из файла
-                    System.out.println("Чтение из файла будет реализовано позже");
+                    scanner.nextLine();
+
+                    System.out.println("Введите путь к файлу:");
+                    String filePath = scanner.nextLine();
+
+                    StudentFileService studentFileService = new StudentFileService();
+                    List<Student> studentsFromFile = studentFileService.readStudents(filePath);
+
+                    studentsFromFile.forEach(student ->
+                            studentList.add(studentList.size(), student)
+                    );
+
+                    System.out.println("Из файла успешно добавлено студентов: " + studentsFromFile.size());
+                    studentsFromFile.forEach(System.out::println);
                     break;
                 default:
                     System.out.println("Неверный ввод!");

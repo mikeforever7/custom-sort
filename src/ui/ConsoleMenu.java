@@ -4,6 +4,7 @@ import enums.SortOption;
 import enums.SortType;
 import model.Student;
 import service.SortService;
+import service.StudentFileOutputService;
 import service.StudentInputService;
 import strategy.GradeSortStrategy;
 import strategy.GroupSortStrategy;
@@ -17,15 +18,23 @@ import java.util.Scanner;
 
 
 public class ConsoleMenu {
+
     private final Scanner scanner;
     private final SortService sortService;
     private final StudentInputService studentInputService;
+    private final StudentFileOutputService studentFileOutputService;
     List<Student> students = new ArrayList<>();
 
-    public ConsoleMenu(Scanner scanner, SortService sortService, StudentInputService studentInputService) {
+    public ConsoleMenu(
+            Scanner scanner,
+            SortService sortService,
+            StudentInputService studentInputService,
+            StudentFileOutputService studentFileOutputService
+    ) {
         this.scanner = scanner;
         this.sortService = sortService;
         this.studentInputService = studentInputService;
+        this.studentFileOutputService = studentFileOutputService;
     }
 
     Map<SortOption, SortStrategy> strategies = Map.of(
@@ -63,7 +72,7 @@ public class ConsoleMenu {
                 case 1 -> inputStudents();
                 case 2 -> sortStudents();
                 case 3 -> printStudents(students);
-//                case 4 -> saveStudents();
+                case 4 -> saveStudents();
                 case 0 -> running = false;
                 default -> System.out.println("Неверный выбор!");
             }
@@ -127,6 +136,22 @@ public class ConsoleMenu {
             System.out.println("Выборочная сортировка работает только с целыми числами!");
         }
         return sortOption;
+    }
+
+    private void saveStudents() {
+        if (students.isEmpty()) {
+            System.out.println("Список студентов пуст. Сохранять нечего.");
+            return;
+        }
+
+        System.out.println("Введите путь к файлу для сохранения:");
+        String filePath = scanner.nextLine().trim();
+
+        studentFileOutputService.appendStudents(
+                filePath,
+                "Текущая коллекция студентов",
+                students
+        );
     }
 
     private void printStudents(List<Student> students) {
