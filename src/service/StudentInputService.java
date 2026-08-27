@@ -53,7 +53,11 @@ public class StudentInputService {
                     }
 
                     FillStrategy manualStrategy = new ManualStudentInput();
-                    List<Student> manualStream = Stream.iterate(0, i -> i + 1).limit(manualCount).map(i -> manualStrategy.fill()).peek(student -> studentList.add(studentList.size(), student)).collect(Collectors.toCollection(AwesomeArrayList::new));
+                    List<Student> manualStream = Stream.iterate(0, i -> i + 1)
+                            .limit(manualCount)
+                            .map(i -> manualStrategy.fill())
+                            .peek(student -> studentList.add(studentList.size(), student))
+                            .collect(Collectors.toCollection(AwesomeArrayList::new));
 
                     manualStream.forEach(System.out::println);
                     break;
@@ -76,7 +80,10 @@ public class StudentInputService {
                     }
 
                     FillStrategy randomStrategy = new RandomStudentGenerator();
-                    List<Student> randomStream = Stream.generate(() -> randomStrategy.fill()).limit(randomCount).peek(student -> studentList.add(studentList.size(), student)).collect(Collectors.toCollection(AwesomeArrayList::new));
+                    List<Student> randomStream = Stream.generate(() -> randomStrategy.fill())
+                            .limit(randomCount)
+                            .peek(student -> studentList.add(studentList.size(), student))
+                            .collect(Collectors.toCollection(AwesomeArrayList::new));
 
                     randomStream.forEach(System.out::println);
                     break;

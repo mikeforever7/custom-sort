@@ -55,6 +55,9 @@ public class ManualStudentInput implements FillStrategy {
                 System.out.println("Ошибка! " + badInput + " это не допустимый номер зачетки. Введите еще раз.");
             }
         }
-        return new Student.Builder().groupNumber(group).averageGrade(grade).recordBookNumber(recordBook).build();
+        return new Student.Builder().groupNumber(group)
+                .averageGrade(grade)
+                .recordBookNumber(recordBook)
+                .build();
     }
 }
