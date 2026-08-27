@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-
 public class ConsoleMenu {
     private final Scanner scanner;
     private final SortService sortService;
