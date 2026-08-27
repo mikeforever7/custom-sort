@@ -9,6 +9,7 @@ import strategy.GradeSortStrategy;
 import strategy.GroupSortStrategy;
 import strategy.RecordBookSortStrategy;
 import strategy.SortStrategy;
+import service.StudentFileService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +21,14 @@ public class ConsoleMenu {
     private final Scanner scanner;
     private final SortService sortService;
     private final StudentInputService studentInputService;
+    private final StudentFileService studentFileService ;
     List<Student> students = new ArrayList<>();
 
-    public ConsoleMenu(Scanner scanner, SortService sortService, StudentInputService studentInputService) {
+    public ConsoleMenu(Scanner scanner, SortService sortService, StudentInputService studentInputService,  StudentFileService studentFileService) {
         this.scanner = scanner;
         this.sortService = sortService;
         this.studentInputService = studentInputService;
+        this.studentFileService = studentFileService;
     }
 
     Map<SortOption, SortStrategy> strategies = Map.of(
@@ -63,7 +66,7 @@ public class ConsoleMenu {
                 case 1 -> inputStudents();
                 case 2 -> sortStudents();
                 case 3 -> printStudents(students);
-//                case 4 -> saveStudents();
+                case 4 -> saveStudents();
                 case 0 -> running = false;
                 default -> System.out.println("Неверный выбор!");
             }
@@ -128,7 +131,21 @@ public class ConsoleMenu {
         }
         return sortOption;
     }
+    private void saveStudents() {
+        if (students.isEmpty()) {
+            System.out.println("Список студентов пуст. Сохранять нечего.");
+            return;
+        }
 
+        System.out.println("Введите путь к файлу для сохранения:");
+        String filePath = scanner.nextLine().trim();
+
+        studentFileService.appendStudents(
+                filePath,
+                "Текущая коллекция студентов",
+                students
+        );
+    }
     private void printStudents(List<Student> students) {
         if (students.isEmpty()) {
             System.out.println("Список студентов пуст!");
