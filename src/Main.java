@@ -1,4 +1,5 @@
 import service.SortService;
+import service.StudentCountService;
 import service.StudentInputService;
 import service.StudentFileService;
 import strategy.QuickSort;
@@ -8,7 +9,6 @@ import ui.ConsoleMenu;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         QuickSort quickSort = new QuickSort();
@@ -16,7 +16,8 @@ public class Main {
         SortService sortService = new SortService(quickSort, selectiveSort);
         StudentFileService studentFileService = new StudentFileService();
         StudentInputService studentInputService = new StudentInputService(studentFileService);
-        ConsoleMenu consoleMenu = new ConsoleMenu(scanner, sortService,studentInputService, studentFileService);
+        StudentCountService studentCountService = new StudentCountService();
+        ConsoleMenu consoleMenu = new ConsoleMenu(scanner, sortService, studentInputService, studentFileService, studentCountService);
         consoleMenu.run();
     }
 }

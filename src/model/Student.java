@@ -16,6 +16,18 @@ public class Student {
         this.recordBookNumber = recordBookNumber;
     }
 
+    public int getGroupNumber() {
+        return groupNumber;
+    }
+
+    public double getAverageGrade() {
+        return averageGrade;
+    }
+
+    public int getRecordBookNumber() {
+        return recordBookNumber;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -39,18 +51,6 @@ public class Student {
     @Override
     public int hashCode() {
         return Objects.hash(groupNumber, averageGrade, recordBookNumber);
-    }
-
-    public int getGroupNumber() {
-        return groupNumber;
-    }
-
-    public double getAverageGrade() {
-        return averageGrade;
-    }
-
-    public int getRecordBookNumber() {
-        return recordBookNumber;
     }
 
     public static class Builder {
