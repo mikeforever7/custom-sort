@@ -4,120 +4,31 @@ import collection.AwesomeArrayList;
 import model.Student;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StudentInputService {
-
     private final StudentFileService studentFileService;
+
     public StudentInputService(StudentFileService studentFileService) {
         this.studentFileService = studentFileService;
     }
 
+    public List<Student> inputManualStudents(int manualCount) {
+        FillStrategy manualStrategy = new ManualStudentInput();
+        return Stream.generate(manualStrategy::fill)
+                .limit(manualCount)
+                .collect(Collectors.toCollection(AwesomeArrayList::new));
+    }
 
-    public List<Student> inputStudents() {
+    public List<Student> inputRandomStudents(int manualCount) {
+        FillStrategy randomStrategy = new RandomStudentGenerator();
+        return Stream.generate(randomStrategy::fill)
+                .limit(manualCount)
+                .collect(Collectors.toCollection(AwesomeArrayList::new));
+    }
 
-        List<Student> studentList = new AwesomeArrayList();
-        Scanner scanner = new Scanner(System.in);
-
-
-        while (true) {
-            System.out.println("Выберите способ заполнения студентов");
-            System.out.println("1- вручную");
-            System.out.println("2- случайно");
-            System.out.println("3- из файла");
-            System.out.println("0- выйти");
-
-            if (!scanner.hasNextInt()) {
-                String badInput = scanner.next();
-                System.out.println("Неверный ввод! \"" + badInput + "\" это не целое число. Введите число от 0 до 3");
-                continue;
-            }
-
-            int choice = scanner.nextInt();
-
-            if (choice == 0) {
-                System.out.println("Ввод завершен");
-                break;
-            }
-
-            switch (choice) {
-                case 1:
-                    int manualCount;
-                    while (true) {
-                        System.out.println("Введите количество студентов, которых нужно заполнить вручную");
-                        if (scanner.hasNextInt()) {
-                            manualCount = scanner.nextInt();
-                            if (manualCount <= 0) {
-                                System.out.println("Количество должно быть больше 0. Введите еще раз.");
-                                continue;
-                            }
-                            break;
-                        } else {
-                            String badInput = scanner.next();
-                            System.out.println("Ошибка!" + badInput + "это не целое число. Введите еще раз.");
-                        }
-                    }
-
-                    FillStrategy manualStrategy = new ManualStudentInput();
-                    List<Student> manualStream = Stream.iterate(0, i -> i + 1)
-                            .limit(manualCount)
-                            .map(i -> manualStrategy.fill())
-                            .peek(student -> studentList.add(studentList.size(), student))
-                            .collect(Collectors.toCollection(AwesomeArrayList::new));
-
-                    manualStream.forEach(System.out::println);
-                    break;
-
-                case 2:
-                    int randomCount;
-                    while (true) {
-                        System.out.println("Введите количество студентов, которых нужно заполнить случайно");
-                        if (scanner.hasNextInt()) {
-                            randomCount = scanner.nextInt();
-                            if (randomCount <= 0) {
-                                System.out.println("Количество должно быть больше 0. Введите еще раз.");
-                                continue;
-                            }
-                            break;
-                        } else {
-                            String badInput = scanner.next();
-                            System.out.println("Ошибка!" + badInput + "это не целое число. Введите еще раз.");
-                        }
-                    }
-
-                    FillStrategy randomStrategy = new RandomStudentGenerator();
-                    List<Student> randomStream = Stream.generate(() -> randomStrategy.fill())
-                            .limit(randomCount)
-                            .peek(student -> studentList.add(studentList.size(), student))
-                            .collect(Collectors.toCollection(AwesomeArrayList::new));
-
-                    randomStream.forEach(System.out::println);
-                    break;
-
-                case 3:
-                    scanner.nextLine();
-
-                    System.out.println("Введите путь к файлу:");
-                    String filePath = scanner.nextLine();
-                    List<Student> studentsFromFile =
-                            studentFileService.readStudents(filePath);
-                    studentsFromFile.forEach(student ->
-                            studentList.add(studentList.size(), student)
-                    );
-                    System.out.println(
-                            "Из файла добавлено студентов: "
-                                    + studentsFromFile.size()
-                    );
-                    break;
-
-                default:
-                    System.out.println("Неверный ввод!");
-            }
-        }
-
-        System.out.println("Всего студентов в списке: " + studentList.size());
-        return studentList;
+    public List<Student> inputFromFileStudents(String filePath) {
+        return studentFileService.readStudents(filePath);
     }
 }
