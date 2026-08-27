@@ -11,9 +11,17 @@ import java.util.stream.Stream;
 
 public class StudentInputService {
 
+    private final StudentFileService studentFileService;
+    public StudentInputService(StudentFileService studentFileService) {
+        this.studentFileService = studentFileService;
+    }
+
+
     public List<Student> inputStudents() {
+
         List<Student> studentList = new AwesomeArrayList();
         Scanner scanner = new Scanner(System.in);
+
 
         while (true) {
             System.out.println("Выберите способ заполнения студентов");
@@ -56,8 +64,19 @@ public class StudentInputService {
                     randomStream.forEach(System.out::println);
                     break;
                 case 3:
-                    //TODO здесь должен быть вызов чтения из файла
-                    System.out.println("Чтение из файла будет реализовано позже");
+                    scanner.nextLine();
+
+                    System.out.println("Введите путь к файлу:");
+                    String filePath = scanner.nextLine();
+                    List<Student> studentsFromFile =
+                            studentFileService.readStudents(filePath);
+                    studentsFromFile.forEach(student ->
+                            studentList.add(studentList.size(), student)
+                    );
+                    System.out.println(
+                            "Из файла добавлено студентов: "
+                                    + studentsFromFile.size()
+                    );
                     break;
                 default:
                     System.out.println("Неверный ввод!");
