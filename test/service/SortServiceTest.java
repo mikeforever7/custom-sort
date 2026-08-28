@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import strategy.GradeSortStrategy;
 import strategy.GroupSortStrategy;
 import strategy.QuickSort;
+import strategy.SelectiveSort;
 
 import java.util.List;
 
@@ -20,7 +21,8 @@ class SortServiceTest {
     @BeforeEach
     void setUp() {
         QuickSort sorter = new QuickSort();
-        sortService = new SortService(sorter);
+        SelectiveSort selectiveSorter = new SelectiveSort();
+        sortService = new SortService(sorter, selectiveSorter);
 
         s1 = new Student.Builder().groupNumber(20).averageGrade(4.0).recordBookNumber(200).build();
         s2 = new Student.Builder().groupNumber(10).averageGrade(9.0).recordBookNumber(100).build();
