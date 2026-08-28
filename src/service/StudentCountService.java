@@ -37,10 +37,6 @@ public class StudentCountService {
             throw new RuntimeException(e);
         }
 
-        int result = counts[0] + counts[1];
-
-        System.out.println("Количество вхождений: " + result);
-
-        return result;
+        return counts[0] + counts[1];
     }
 }
