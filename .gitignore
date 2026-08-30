@@ -8,3 +8,4 @@ target/
 
 # Compiled Java files
 *.class
+/lib/

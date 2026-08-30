@@ -62,7 +62,6 @@ class StudentInputServiceTest {
 
         StudentInputService serviceWithFake = new StudentInputService(fakeFileService);
 
-        //и все потому Student приватный
         List<Student> students = serviceWithFake.inputFromFileStudents("valid.csv");
 
         assertNotNull(students);
