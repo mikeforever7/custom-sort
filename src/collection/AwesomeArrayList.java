@@ -1,16 +1,14 @@
 package collection;
 
-import model.Student;
-
 import java.util.AbstractList;
 
-public class AwesomeArrayList extends AbstractList<Student> {
-    private Student[] myArray;
+public class AwesomeArrayList<T> extends AbstractList<T> {
+    private Object[] myArray;
     private int arraySize;
     private static final int DEFAULT_ARRAY_SIZE = 10;
 
     public AwesomeArrayList() {
-        this.myArray = new Student[DEFAULT_ARRAY_SIZE];
+        this.myArray = new Object[DEFAULT_ARRAY_SIZE];
         this.arraySize = 0;
     }
 
@@ -20,13 +18,13 @@ public class AwesomeArrayList extends AbstractList<Student> {
     }
 
     @Override
-    public void add(int index, Student element) {
+    public void add(int index, T element) {
         if (index < 0 || index > arraySize) {
             throw new IndexOutOfBoundsException("такого элемента в этом потрясающем массиве нет");
         }
         if (arraySize == myArray.length) {
             int TEMP_ARRAY_SIZE = arraySize * 2;
-            Student[] tempArray = new Student[TEMP_ARRAY_SIZE];
+            Object[] tempArray = new Object[TEMP_ARRAY_SIZE];
             for (int i = 0; i < arraySize; i++) {
                 tempArray[i] = myArray[i];
             }
@@ -41,19 +39,19 @@ public class AwesomeArrayList extends AbstractList<Student> {
     }
 
     @Override
-    public Student get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= arraySize) {
             throw new IndexOutOfBoundsException("такого элемента в этом потрясающем массиве нет");
         }
-        return myArray[index];
+        return (T) myArray[index];
     }
 
     @Override
-    public Student remove(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= arraySize) {
             throw new IndexOutOfBoundsException("такого элемента в этом потрясающем массиве нет");
         }
-        Student removed = myArray[index];
+        T removed = (T) myArray[index];
         for (int i = index; i < arraySize - 1; i++) {
             myArray[i] = myArray[i + 1];
         }
@@ -71,11 +69,11 @@ public class AwesomeArrayList extends AbstractList<Student> {
     }
 
     @Override
-    public Student set(int index, Student element) {
+    public T set(int index, T element) {
         if (index < 0 || index >= arraySize) {
             throw new IndexOutOfBoundsException("такого элемента в этом потрясающем массиве нет");
         }
-        Student tmp = myArray[index];
+        T tmp = (T) myArray[index];
         myArray[index] = element;
         return tmp;
     }
