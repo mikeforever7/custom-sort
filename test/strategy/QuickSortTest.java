@@ -10,7 +10,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class QuickSortTest {
-
     private QuickSort sorter;
     private Student s1;
     private Student s2;
@@ -19,7 +18,6 @@ class QuickSortTest {
     @BeforeEach
     void setUp() {
         sorter = new QuickSort();
-
         s1 = new Student.Builder().groupNumber(30).averageGrade(4.2).recordBookNumber(300).build();
         s2 = new Student.Builder().groupNumber(10).averageGrade(9.1).recordBookNumber(100).build();
         s3 = new Student.Builder().groupNumber(20).averageGrade(6.5).recordBookNumber(200).build();

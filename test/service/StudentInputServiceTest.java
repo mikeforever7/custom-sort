@@ -11,14 +11,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentInputServiceTest {
-
     private final InputStream originalIn = System.in;
-
     private StudentInputService service;
     private StudentFileService fileService;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         fileService = new StudentFileService();
         service = new StudentInputService(fileService);
     }
@@ -29,7 +27,7 @@ class StudentInputServiceTest {
     }
 
     @Test
-    void shouldGenerateRandomStudents(){
+    void shouldGenerateRandomStudents() {
         List<Student> students = service.inputRandomStudents(2);
 
         assertNotNull(students);
@@ -38,7 +36,6 @@ class StudentInputServiceTest {
 
     @Test
     void shouldReadStudentsFromFile() {
-
         Student student1 = new Student.Builder()
                 .groupNumber(10)
                 .averageGrade(5.5)
@@ -51,14 +48,12 @@ class StudentInputServiceTest {
                 .recordBookNumber(1002)
                 .build();
 
-
-        StudentFileService fakeFileService = new StudentFileService(){
+        StudentFileService fakeFileService = new StudentFileService() {
             @Override
-            public List<Student> readStudents(String filePath){
+            public List<Student> readStudents(String filePath) {
                 return List.of(student1, student2);
             }
         };
-
 
         StudentInputService serviceWithFake = new StudentInputService(fakeFileService);
 

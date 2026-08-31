@@ -9,9 +9,8 @@ import java.util.Comparator;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RecordBookSortStrategyTest {
-
     private RecordBookSortStrategy strategy;
-    private Student smallRecordBookStudent_1,smallRecordBookStudent_2;
+    private Student smallRecordBookStudent_1, smallRecordBookStudent_2;
     private Student largeRecordBookStudent;
 
     @BeforeEach

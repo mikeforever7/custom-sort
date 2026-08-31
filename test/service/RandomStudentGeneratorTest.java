@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RandomStudentGeneratorTest {
-
     private RandomStudentGenerator generator;
 
     @BeforeEach
@@ -18,7 +17,6 @@ class RandomStudentGeneratorTest {
     @Test
     void shouldGenerateNotNullStudent() {
         Student student = generator.fill();
-
         assertNotNull(student);
     }
 

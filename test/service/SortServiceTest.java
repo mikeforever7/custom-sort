@@ -13,7 +13,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SortServiceTest {
-
     private SortService sortService;
     private Student s1;
     private Student s2;
@@ -31,7 +30,6 @@ class SortServiceTest {
     @Test
     void shouldDelegateSortingToQuickSort() {
         List<Student> students = List.of(s1, s2);
-
         List<Student> sortedByGrade = sortService.sort(students, new GradeSortStrategy());
         List<Student> sortedByGroup = sortService.sort(students, new GroupSortStrategy());
 

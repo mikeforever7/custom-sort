@@ -9,7 +9,6 @@ import java.util.Comparator;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GroupSortStrategyTest {
-
     private GroupSortStrategy strategy;
     private Student group10Student_1, group10Student_2;
     private Student group50Student;
@@ -29,7 +28,6 @@ class GroupSortStrategyTest {
 
         assertTrue(comparator.compare(group10Student_1, group50Student) < 0);
         assertTrue(comparator.compare(group50Student, group10Student_1) > 0);
-
 
         assertEquals(0, comparator.compare(group10Student_1, group10Student_2));
     }

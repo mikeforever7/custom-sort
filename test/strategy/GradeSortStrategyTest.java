@@ -9,7 +9,6 @@ import java.util.Comparator;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GradeSortStrategyTest {
-
     private GradeSortStrategy strategy;
     private Student lowGradeStudent_1, lowGradeStudent_2;
     private Student highGradeStudent;

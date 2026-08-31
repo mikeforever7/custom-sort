@@ -12,7 +12,6 @@ import java.util.Locale;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManualStudentInputTest {
-
     private final InputStream originalIn = System.in;
     private final Locale originalLocale = Locale.getDefault();
 
