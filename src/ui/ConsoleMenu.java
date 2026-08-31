@@ -199,6 +199,7 @@ public class ConsoleMenu {
         };
         if (sortType == SortType.SELECTIVE && sortOption == SortOption.AVERAGE_GRADE) {
             System.out.println("Выборочная сортировка работает только с целыми числами!");
+            return null;
         }
         return sortOption;
     }
