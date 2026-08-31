@@ -130,7 +130,6 @@ public class ConsoleMenu {
                     System.out.println("Введите путь к файлу:");
                     String filePath = scanner.nextLine();
                     students.addAll(studentInputService.inputFromFileStudents(filePath));
-                    System.out.println("Студенты успешно добавлены");
                     break;
                 case 0:
                     System.out.println("Ввод завершен");
